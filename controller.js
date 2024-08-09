@@ -36,7 +36,7 @@ function criarlista(){
     let tabela = document.getElementById ('tabela').innerHTML = "<tr><th>Nome Usuário</th><th>Ações</th></tr>"
     for(let i = 0; i <= (dadosLista.length-1) ; i++){
         // i é usado para acessar a posição do array
-        tabela += "<tr><td>" + dadosLista [i] + "</td><td> <button type='button' onclick='editar(this.parentNode.parentNode.rowIndex)'>Editar</button> </td></tr>";
+        tabela += "<tr><td>" + dadosLista [i] + "</td><td> <button type='button' onclick='editar(this.parentNode.parentNode.rowIndex)'>Editar</button> <button type='button' onclick='excluir(this.parentNode.parentNode.rowIndex)'>Excluir</button> </td></tr>";
         // coloca array em ordem na coluna ("Nome usuário") da tabela   
         document.getElementById('tabela').innerHTML = tabela;
     }
@@ -46,4 +46,11 @@ function criarlista(){
 function editar(i){
     document.getElementById('nomeUser').value = dadosLista[(i - 1)];
     dadosLista.splice(dadosLista[(i - 1)], 1);
+}
+
+// FUNÇÃO PARA EXCLUIR 
+
+function excluir(i){
+    dadosLista.splice((i-1), 1);
+    document.getElementById('tabela').deleteRow(i);
 }
